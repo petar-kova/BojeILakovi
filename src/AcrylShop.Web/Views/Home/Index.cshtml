@@ -1,0 +1,41 @@
+@model HomeIndexViewModel
+@{
+    ViewData["Title"] = "Početna";
+}
+
+<section>
+    <h1>AcrylShop - Profesionalna trgovina akrilnim bojama</h1>
+    <p>Najbolje cijene, provjerene marke i brza dostava.</p>
+</section>
+
+<section>
+    <h2>Akcije</h2>
+    <div class="product-grid">
+        @foreach (var p in Model.SaleProducts)
+        {
+            <article class="card">
+                <h3>@p.Name</h3>
+                <p>@p.Brand | @p.ProductType</p>
+                <p class="price">@p.Price.ToString("0.00") €</p>
+            </article>
+        }
+    </div>
+</section>
+
+<section>
+    <h2>Najprodavaniji proizvodi</h2>
+    <div class="product-grid">
+        @foreach (var p in Model.BestSellers)
+        {
+            <article class="card">
+                <h3>@p.Name</h3>
+                <p>Prodano: @p.UnitsSold kom</p>
+                <p class="price">@p.Price.ToString("0.00") €</p>
+            </article>
+        }
+    </div>
+</section>
+
+<section>
+    <component type="typeof(AcrylShop.Web.Components.FeaturedProducts)" render-mode="ServerPrerendered" />
+</section>
