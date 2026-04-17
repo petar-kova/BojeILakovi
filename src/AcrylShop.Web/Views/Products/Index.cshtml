@@ -1,0 +1,39 @@
+@model ProductFilterViewModel
+@{
+    ViewData["Title"] = "Proizvodi";
+}
+
+<h1>Svi proizvodi</h1>
+
+<form method="get" class="filters">
+    <input type="text" name="search" value="@Model.Search" placeholder="Pretraga po nazivu ili brandu" />
+
+    <select name="typeFilter">
+        <option value="">Sve vrste</option>
+        @foreach (var type in Model.AvailableTypes)
+        {
+            <option value="@type" selected="@(Model.TypeFilter == type)">@type</option>
+        }
+    </select>
+
+    <select name="sortBy">
+        <option value="">Najprodavanije</option>
+        <option value="price_asc" selected="@(Model.SortBy == "price_asc")">Cijena uzlazno</option>
+        <option value="price_desc" selected="@(Model.SortBy == "price_desc")">Cijena silazno</option>
+        <option value="type" selected="@(Model.SortBy == "type")">Vrsta proizvoda</option>
+    </select>
+
+    <button type="submit">Primijeni</button>
+</form>
+
+<div class="product-grid">
+    @foreach (var p in Model.Products)
+    {
+        <article class="card">
+            <h3>@p.Name</h3>
+            <p>@p.Brand | @p.ProductType</p>
+            <p>@p.Description</p>
+            <p class="price">@p.Price.ToString("0.00") €</p>
+        </article>
+    }
+</div>
