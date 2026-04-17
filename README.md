@@ -18,15 +18,6 @@ Ovaj repo sadrži gotovu osnovu profesionalnog web shopa za prodaju akrilnih boj
    ```
 4. Otvori URL koji ispiše konzola.
 
-## WPF build (Desktop)
-Ako dobiješ grešku tipa `project.assets.json not found`, pokreni restore prije builda:
-
-```bash
-cd src/AcrylShop.Desktop.Wpf
-dotnet restore
-dotnet build
-```
-
 ## Ključne funkcionalnosti
 - Početna stranica s akcijama i najprodavanijim proizvodima.
 - Stranica svih proizvoda s filtriranjem (vrsta, pretraga) i sortiranjem (cijena, vrsta).
