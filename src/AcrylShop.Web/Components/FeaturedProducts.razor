@@ -1,0 +1,33 @@
+@using AcrylShop.Web.Data
+@using Microsoft.EntityFrameworkCore
+@inject ApplicationDbContext Db
+
+<div class="featured-box">
+    <h3>Brzi pregled top proizvoda (Blazor komponenta)</h3>
+    @if (_products is null)
+    {
+        <p>Učitavanje...</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var item in _products)
+            {
+                <li><strong>@item.Name</strong> - @item.Price.ToString("0.00") €</li>
+            }
+        </ul>
+    }
+</div>
+
+@code {
+    private List<AcrylShop.Web.Models.Product>? _products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _products = await Db.Products
+            .AsNoTracking()
+            .OrderByDescending(p => p.UnitsSold)
+            .Take(3)
+            .ToListAsync();
+    }
+}

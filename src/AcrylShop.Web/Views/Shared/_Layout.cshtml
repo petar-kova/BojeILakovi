@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AcrylShop</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <a asp-controller="Home" asp-action="Index">Početna</a>
+            <a asp-controller="Products" asp-action="Index">Svi proizvodi</a>
+            <a href="/Identity/Account/Login">Login</a>
+            <a href="/Identity/Account/Register">Registracija</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
