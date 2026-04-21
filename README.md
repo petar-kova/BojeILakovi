@@ -29,7 +29,6 @@ cd src/AcrylShop.Desktop.Wpf
 dotnet restore
 dotnet build
 ```
-
 ## Ključne funkcionalnosti
 - Početna stranica s akcijama i najprodavanijim proizvodima.
 - Stranica svih proizvoda s filtriranjem (vrsta, pretraga) i sortiranjem (cijena, vrsta).
